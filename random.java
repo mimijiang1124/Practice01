@@ -32,18 +32,19 @@ public class random {
         Random randomInt = new Random();
 
         specialChars = "^&*!=0?$";
-        int charLength = characters.length();
-        int specialCharsLength = specialChars.length();
+
+        // int charLength = characters.length();
+        // int specialCharsLength = specialChars.length();
 
         if (withSpecialChars) {
             characters = characters + specialChars;
-            charLength = charLength + specialCharsLength;
+            // charLength = charLength + specialCharsLength;
         }
 
         for (int i = 0; i < IDlength; i++) {
-            int randomIndex = (int) (randomInt.nextInt(charLength));
+            int randomIndex = (int) (randomInt.nextInt(characters.length()));
             newID = newID + (characters.charAt(randomIndex));
-            System.out.println("randomIndex " + randomIndex + " | newID " + newID);
+            // System.out.println("randomIndex " + randomIndex + " | newID " + newID);
         }
         System.out.println(newID);
 
