@@ -1,7 +1,12 @@
 import java.util.Random;
+
+import javax.swing.text.DefaultStyledDocument.ElementSpec;
+
 import java.util.*;
 
 public class random {
+
+    static String EMPTY = "";
 
     static int temp = 0;
     static int userInputLength = 0;
@@ -9,42 +14,40 @@ public class random {
     static String specialChars;
     static String chars;
     static boolean withSpecialChars = false;
-    static String prefix = "";
-    static String suffix = "";
-    static String newID;
+    static String prefix = EMPTY;
+    static String suffix = EMPTY;
+    static String newID = EMPTY;
+    static String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     public static void main(String[] args) {
 
-        userInputLength = input();
         // String output = "";
         // Try to understand the code
 
+        uniqueID_generator(20, true, "", "");
+
     }
 
-    public static int input() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the length of the token id: ");
-        int length = 0;
-        length = sc.nextInt();
-        sc.close();
-        return length;
-    }
+    public static String uniqueID_generator(int IDlength, boolean withSpecialChars, String prefix, String suffix) {
+        Random randomInt = new Random();
 
-    public String uniqueID_generator(int a, boolean b, String c, String d, Random randomInt){
-        specialChars = "@#%@#$@#$^";
+        specialChars = "^&*!=0?$";
+        int charLength = characters.length();
+        int specialCharsLength = specialChars.length();
 
-        if (b){
-            
-        }else{
-            
+        if (withSpecialChars) {
+            characters = characters + specialChars;
+            charLength = charLength + specialCharsLength;
         }
 
-        for (int i=0; i<a; i++){
-            int randomNumber = (int) (randomInt.nextInt(9) + '0');
-            String newID = newID + 
+        for (int i = 0; i < IDlength; i++) {
+            int randomIndex = (int) (randomInt.nextInt(charLength));
+            newID = newID + (characters.charAt(randomIndex));
+            System.out.println("randomIndex " + randomIndex + " | newID " + newID);
         }
+        System.out.println(newID);
 
-        return "";
+        return newID;
     }
 
 }
